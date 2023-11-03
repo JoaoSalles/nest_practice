@@ -15,4 +15,3 @@ export class EventSchema {
   @Column('timestamptz')
   date: Date;
 }
-

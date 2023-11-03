@@ -1,5 +1,6 @@
 export class EventDto {
     name: string;
-    date: string
+    active: boolean;
+    date: string;
   }
   

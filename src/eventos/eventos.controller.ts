@@ -1,19 +1,21 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get, Post, Body } from '@nestjs/common';
 import { EventDto } from './dto/event.dto';
 import { Event } from '../@core/domain/evento/event'
 import { EventosService } from './eventos.service';
 
 @Controller('eventos')
 export class EventosController {
-  constructor(private readonly eventosService: EventosService) {}
+  constructor(
+    private eventosService: EventosService,
+  ) {}
 
   @Get()
-  getEvent(): Array<Event> {
+  getEvent(): Promise<Array<EventDto>> {
     return this.eventosService.getEvents();
   }
 
   @Post()
-  createEvent(event: EventDto): void {
+  createEvent(@Body() event: EventDto): void {
     return this.eventosService.createEvents(event);
   }
 }
