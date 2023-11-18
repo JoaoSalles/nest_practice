@@ -7,9 +7,11 @@ import { EventRepository } from '../@core/domain/evento/event.repository';
 import { EventSchema } from 'src//@core/infra/db/event.schema';
 import { EventosController } from './eventos.controller';
 import { EventosService } from './eventos.service';
+import { KafkaModule } from 'src/kafka/kafka.module';
+
 
 @Module({
-  imports: [TypeOrmModule.forFeature([EventSchema])],
+  imports: [TypeOrmModule.forFeature([EventSchema]), KafkaModule],
   controllers: [EventosController],
   providers: [
     EventosService,
